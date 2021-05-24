@@ -7,7 +7,7 @@ home_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ###############
 
 source "${home_dir}/background_music.sh"
-source "${home_dir}/scene.sh"
+source "${home_dir}/scenes.sh"
 
 ###########
 # Functions

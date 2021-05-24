@@ -73,6 +73,12 @@ exit_game() {
     exit 0
 }
 
+trap exit_game EXIT
+
+# ######
+# scenes
+# ######
+
 scene_1_intro() {
     local message="
     Up the airy mountain,
