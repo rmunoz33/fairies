@@ -1,2 +1,2 @@
 # fairies
-A text-based game inspired by William Allingham's poem, The Fairies
+A text-based command line game inspired by William Allingham's poem, The Fairies
