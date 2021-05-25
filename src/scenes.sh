@@ -120,5 +120,3 @@ what_is_this() {
     carry_on
     exit_game
 }
-
-scene_1_intro
