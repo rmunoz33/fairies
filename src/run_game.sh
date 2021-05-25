@@ -8,6 +8,7 @@ home_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 source "${home_dir}/background_music.sh"
 source "${home_dir}/scenes.sh"
+source "${home_dir}/start_screen.sh"
 
 ###########
 # Functions
@@ -33,4 +34,5 @@ run_scene() {
 ############
 play_music_bowerlake
 
+start_screen
 run_scene "scene_1_intro"
