@@ -8,7 +8,15 @@ source "${home_dir}/resources/unicode_emojis.sh"
 start_screen() {
     clear
     
-    echo "#############################################################################"
+    cols=$(tput cols)
+    border=""
+    
+    for ((i=0; i < $cols; i++))
+    do
+        border="$border#"
+    done
+    
+    echo "$border"
     echo
     print_green "  ${BOLD}The${NORMAL}"
     echo
@@ -20,7 +28,7 @@ start_screen() {
     print_green "      ##     ###  #   #   #       $     ##        #####"
     echo
     echo
-    echo "#############################################################################"
+    echo "$border"
     echo
     read -p "           Press [Enter] to begin" fackEnterKey
     echo

@@ -13,12 +13,20 @@ source "${home_dir}/resources/unicode_emojis.sh"
 message() {
     local message="${1}"
     
-    echo "#############################################################################"
+    cols=$(tput cols)
+    border=""
+    
+    for ((i=0; i < $cols; i++))
+    do
+        border="$border#"
+    done
+    
+    echo "$border"
     echo
-    echo "${message}" | fold -w 80 -s
+    echo "${message}" | fold -w "$cols" -s
     echo
     echo
-    echo "#############################################################################"
+    echo "$border"
     echo
 }
 
@@ -97,7 +105,7 @@ scene_1_intro() {
 enter_the_game() {
     clear
     local message="You've entered the game. Good luck!"
-
+    
     message "${message}"
     carry_on
     exit_game
@@ -106,7 +114,7 @@ enter_the_game() {
 run_away() {
     clear
     local message="You ran away, you coward! Probably for the best though."
-
+    
     message "${message}"
     carry_on
     exit_game
@@ -115,7 +123,7 @@ run_away() {
 what_is_this() {
     clear
     local message="Why are you even here?"
-
+    
     message "${message}"
     carry_on
     exit_game
