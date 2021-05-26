@@ -32,8 +32,10 @@ message() {
 
 question() {
     local question="${1}"
+
+    cols=$(tput cols)
     
-    echo "${question}" | fold -w 80 -s
+    echo "${question}" | fold -w "$cols" -s
     echo
 }
 
