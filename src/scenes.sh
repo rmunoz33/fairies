@@ -13,7 +13,7 @@ source "${home_dir}/resources/unicode_emojis.sh"
 message() {
     local message="${1}"
     
-    cols=$(tput cols)
+    cols=`tput cols`
     border=""
     
     for ((i=0; i < $cols; i++))

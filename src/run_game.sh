@@ -34,5 +34,5 @@ run_scene() {
 ############
 play_music_bowerlake
 
-start_screen
+run_start_screen
 run_scene "scene_1_intro"
