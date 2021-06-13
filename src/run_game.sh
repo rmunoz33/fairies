@@ -35,4 +35,4 @@ run_scene() {
 play_music_bowerlake
 
 run_start_screen
-run_scene "scene_1_intro"
+run_scene "scene_1_the_garden"

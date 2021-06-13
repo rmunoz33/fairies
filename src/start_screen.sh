@@ -7,11 +7,13 @@ source "${home_dir}/resources/unicode_emojis.sh"
 
 type_message() {
     local message="${1}"
+
+    cols=`tput cols`
     
     for ((i=0; i<${#message}; i++))
     do
         echo "after 30" | tclsh
-        printf "${message:$i:1}"
+        printf "${message:$i:1}"  | fold -w "$cols" -s
     done
     
     echo
@@ -20,7 +22,7 @@ type_message() {
 start_screen() {
     clear
     
-    cols=$(tput cols)
+    cols=`tput cols`
     border=""
     
     for ((i=0; i < $cols; i++))
@@ -37,7 +39,7 @@ start_screen() {
     print_green "      ######              # ###       ##    ##    ##"
     print_green "      ##     #### #   #   ##   #  #   ########    ######"
     print_green "      ##    #    ##   #   #       #   ##              ##"
-    print_green "      ##     ###  #   #   #       $     ##        #####"
+    print_green "      ##     ###  #   #   #       #     ##        #####"
     echo
     echo
     echo "$border"
@@ -65,11 +67,12 @@ run_start_screen() {
     
     echo "$border"
     echo
-    type_message "${message}" | fold -w "$cols" -s
+    type_message "${message}" 
     echo
     echo
     echo "$border"
     echo
+    sleep 1
     read -p "Press [Enter] key to continue..." fackEnterKey
     
     start_screen
