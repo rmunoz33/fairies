@@ -8,6 +8,7 @@ home_dir="` cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd `"
 
 source "${home_dir}/print_colors.sh"
 source "${home_dir}/resources/unicode_emojis.sh"
+source "${home_dir}/resources/loading_fairy.sh"
 
 align_fairy=0
 align_human=0
@@ -101,6 +102,16 @@ exit_game() {
 }
 
 trap exit_game EXIT
+
+loading_fairy_scene() {
+    clear
+    echo
+    echo
+    echo
+    echo
+    loading_fairy
+    clear
+}
 
 # ######
 # scenes
@@ -369,13 +380,16 @@ try_to_find_a_way_home() {
     clear
     message "${message}"   
     carry_on
+    loading_fairy_scene
     scene_1_faerie
 }
 
-# 1. The Garden
+# 2. Into Faerie
 
 scene_1_faerie() {
-    local message="To be continued..."
+    local message="What was that?
+    
+    You find yourself ..."
 
     clear
     message "${message}"   
