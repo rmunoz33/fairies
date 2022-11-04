@@ -18,6 +18,8 @@ align_victim=0
 owl_feather=0
 mothers_brooch=0
 
+tired=true
+
 # #########
 # Functions
 # #########
@@ -178,6 +180,7 @@ play_with_the_brooch() {
 
     Your body starts to sway from side to side as you imagine the music the bell would make. The world seems still, and you are reminded of why you love coming out to the cottage. It was very kind of mother to let you play with the brooch. Speaking of which..."
     
+    clear
     message "${message}"
     carry_on
     scene_2_the_garden
@@ -365,8 +368,9 @@ step_into_the_ring() {
     local message="There's no going back at this point. You take a deep breath, and let it out slowly. Closing your eyes, you lift one foot forward and step forward into the ring of mushrooms."
 
     clear
-    message "${message}"   
+    message "${message}"
     carry_on
+    loading_fairy_scene
     scene_1_faerie
 }
 
@@ -378,7 +382,7 @@ try_to_find_a_way_home() {
     However, just as you are about to turn away from the ring, you hear a small and high-pitched voice behind you. '${GREEN}Come inside!${NO_COLOR}' There is a strong push behind you, like tiny hands that give you a mighty shove. And you find yourself uncontrollably falling into the mushroom circle."
 
     clear
-    message "${message}"   
+    message "${message}"
     carry_on
     loading_fairy_scene
     scene_1_faerie
@@ -389,11 +393,147 @@ try_to_find_a_way_home() {
 scene_1_faerie() {
     local message="What was that?
     
-    You find yourself ..."
+    You awake to find yourself in a grassy clearing surrounded by reeds. The sky above you shimmers with stars, and glows with a strange blue and purple phosphorescence. Not far away is the dark shore of a lake, and in the distance surrounding the lake you notice mountains surrounding the valley which the lake resides in.
+    
+    This certainly isn't the countryside where your family's cottage sits."
 
     clear
-    message "${message}"   
+    message "${message}"
+    carry_on
+
+    local message="Cautiously you approach the edge of the lake. Its water seems eerily still, almost like glass. You peek into the water curiously. But instead of the reflection of distant mountains or the glowing sky, you see your family's cottage along with the garden and woods, almost as though you were floating on clouds above them.
+    
+    As your eyes wander over the familiar landscape below you, you begin to hear music in the distance. Your attention slowly turns away from the scenery in the lake, and toward a knoll near the shore some distance away."
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="Curiosity gets the better of you, and you start walking toward the hill and the music coming from it. As you approach, the music grows louder. You can make out the sound of flutes and drums. You also begin to notice lights scattered along the grassy hillside, the largest of which sits at the very top.
+    
+    When you get to the foot of the knoll, a cobblestone pathway opens up before you, revealing a collection of dwellings on either side. Perhaps someone here can provide some explanation for where you are and how you got here. You walk slowly up the pathway. But as you peer into a number of windows, you realize that nobody is at home in any of them."
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="The only place showing any signs of life is the bright spot a the top of the knoll. Quickly you begin to make your way up the winding stone path through the village, at the end of which you find yourself standing before a pair of large silvery doors. The music is clearly coming from the other side, and you can hear a dull roar of voices as well.
+    
+    Looking around, you have to catch your breath when you see two large frogs, the same size as the ones you encountered earlier, sleeping on either side of the doors, apparently intended to guard it. Best not wait for them to awaken. So with what courage you can muster, you stretch out your fist to knock on the doors."
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="A tingling sensation rushes through your body, and the next thing you know you're on the other side of the silver doors. The music quickly dies out, and you find yourself staring at the edge of a large courtyard before a large crowd of people, apparently midway through a celebration of some sort, all of whom have turned to look at you.
+    
+    But these aren't ordinary people. As you stand there somewhat embarrassed, you realize that all of these folk are roughly your own size, even as they appear to be full grown. Their skin is plump and smooth like porceline, their cheeks rosy, and their ears long and pointy. What's more, they wore the strangest assortment of clothes you've ever seen, a peculiar blend of extravagent gowns and dresses as well as leaves and branches.
+    
+    Then, quite suddenly a voice cries out, at the same time both high pitched and gruff, '${GREEN}At last!${NO_COLOR}'"
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="'${GREEN}Welcome, welcome!${NO_COLOR}' continues the speaker, who you now see as a large and rotund fellow sitting on a throne of giant flower petals at the far end of the courtyard. He has a large grey beard that glitters and curls at the ends, and atop his head sits a crown of thistles and holly. '${GREEN}We've been expecting you. Come closer, my child.${NO_COLOR}'
+    
+    Cautious and unsure of your strange new surroundings, you glance around. Seeing your hesitation, the crowned fellow turns to a couple of larger individuals standing nearby and says with an air of authority, '${GREEN}Bring her closer.${NO_COLOR}'"
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="The larger individuals walk purposefully toward you and then gently, but firmly, guide you toward the other end of the courtyard, up a small flight of stairs, and before the seated fellow on the throne. '${GREEN}Ah, that's better,${NO_COLOR}' He chides. '${GREEN}Allow me to introduce myself. I am Oberon, king of the fair folk,${NO_COLOR}' he says, gesturing to the crowd behind you. '${GREEN}And you must be Bridget. It's an honor to finally meet you, and to have you join me in my humble palace.${NO_COLOR}'
+    
+    The old king has a kindly smile, which gives you courage. Politely you respond, 'Thank you, your majesty. It's a lovely palace. Might I ask, what are you celebrating this evening?' '${GREEN}What are we celebrating? Why, you, my child! We are celebrating the great privilege it is to have you among us.${NO_COLOR}'
+    
+    With a chuckle, Oberon motions for you to sit next to him."
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="You sit comfortably next to the king. Almost immediately a trio of fairies approach you with large plates. The food on these plates looks strange. Not unappetizing. Still, you've always been a bit hesitant about trying new foods. And wasn't there a nursery rhyme about eating fairy food? But you don't want to be rude, and father always says you should be willing to try new foods before declaring you don't like them."
+
+    clear
+    message "${message}"
+
+    local question="Do you eat the new fairy food?"
+
+    question "${question}"
+    actions "Eat the food" "Reject the food"
+}
+
+eat_the_food() {
+    ((align_fairy++))
+    tired=false
+
+    local message="'Thank you!' you say as you take a portion of food from one of the plates. Gingerly, you bite into it, unsure what to expect. To your amazement, it explodes with flavors, the likes of which you'd never even dreamed of. This is utterly delicious! Beyond that, you can feel the flavor moving through you, filling you up and changing you.
+    
+    Wait, that can't be right. Flavor can't change you. You quietly examine yourself. You look the same. There's been no evident change to you, whether physically, mentally, or emotionally. But you could have sworn... Oh well. What a strange sensation."
+
+    clear
+    message "${message}"
+    carry_on
+
+    scene_2_faerie
+}
+
+reject_the_food() {
+    ((align_human++))
+
+    local message="'No, thank you,' you say politely to the fairies carrying the plates of food. They look at you somewhat alarmed and confused. Clearly they expect you to eat something. One of them moves their plate a little closer to you, encouraging you to take a morsel. 'Oh,' you exclaim quietly. 'I really couldn't.' The servers glance cautiously up at the king beside you.
+    
+    '${GREEN}Come now, you must eat something. We have a long night of celebrating ahead of us, and you'll need your strength.${NO_COLOR}' You don't really feel like eating. But you grab a small yellow pancake-like sample from one of the plates and smile graciously. This seems to satisfy both the king and the servers, who return their attentions to the rest of the celebration.
+    
+    After holding the pancake in your hand for a few minutes, you set it down and forget about it entirely."
+
+    clear
+    message "${message}"
+    carry_on
+
+    scene_2_faerie
+}
+
+scene_2_faerie() {
+    feeling_sleepy=`[[ $tired == true ]] && echo "you begin to feel tired, and can feel yourself nodding off." || echo "you are as wide awake as ever. Something in the fairy food must have given you an amazing amount of energy."`
+
+    local message="The night wears on, and though the revelry continues for several hours, they seem to go by rather quickly. After what might have been ages ${feeling_sleepy}
+    
+    '${GREEN}Come!${NO_COLOR}' Oberon exclaims. The old king shows no signs of fatigue. But he does seem to be somewhat lost in his enjoyment. Maybe he's been a little wild and nutty this whole time, and you are just now noticing. '${GREEN}Let us share our merrymaking!${NO_COLOR}'
+    
+    Almost as if on cue, the entire party begins preparing to travel. Coaches and chariots are brought forth from a gateway off to one side, and various animals - hummingbirds, bats, moths, butterflies, etc. - each one much larger than it ought to be, are set to draw the numerous carriages."
+    
+    clear
+    message "${message}"
+    carry_on
+
+    local message="You are swept off your feet by several hands and deposited on a cushioned seat in the largest sleigh alongside Oberon. The king roars with laughter as the driver cracks a whip and ten massive dragonflies pull the sleigh swiftly off the ground and through the air, soaring above the palace and away from the grassy knoll.
+    
+    The cold night air rushes past your face, and you find yourself suddenly invigorated. Looking around, you see that a whole host of chariots and sleighs surround the one you're in, with all the celebratory party looking both stately and wild at the same time. And blanketing the whole affair is a white fog which spirals and dances below and between all of the carriages."
+    
+    clear
+    message "${message}"
+    carry_on
+
+    local message="Below you the countryside rushes past in a blur. Very quickly the whole affair crosses over moors and valleys, lakes and rivers. Looking ahead, you see a body of water so large that it must be the ocean. 'Can we have come so far already?' you ask yourself. You lift your gaze above the horizon to the sky, and see a rainbow of lights dancing to the north. Oberon's voice booms out over the procession, '${GREEN}Aloft!${NO_COLOR}'
+
+    Almost immediately your sleigh and all those around it rise quickly up into the night sky, moving rapidly toward the rippling lights above. Oberon's laughter seems to resonate through the whole parade. Then, just as suddenly as it all began, everything seems to slow to a halt. Glancing around, you find yourself and the whole party standing in the very midst of a moving collage of colors."
+    
+    clear
+    message "${message}"
+    carry_on
+
+    local message="'${GREEN}Come, child,${NO_COLOR}' Oberon says, offering his hand to you.
+    
+    You take his hand and he leads you out of the sleigh and onto a floor so polished and clear that you can scarcely tell where it ends and the surrounding rainbow of moving colors begins. You are so fascinated by walking on a nearly invisible floor that you don't notice the palace in front of you until you are already walking up the front steps.
+    
+    '${GREEN}My dear Bridget,${NO_COLOR}' Oberon says as he wraps one large arm around you, guiding you forward through a pair of enormous shimmering doors beneath a vaulted portico. '${GREEN}Allow me to introduce to you the Queen of the Northern Lights.${NO_COLOR}'"
+    
+    clear
+    message "${message}"
     carry_on
 
     exit_game
 }
+
