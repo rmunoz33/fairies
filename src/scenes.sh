@@ -43,7 +43,7 @@ message() {
     
     echo "$border"
     echo
-    echo -e "${message}" | fold -w "$cols" -s
+    printf "%b\n" "${message}" | fold -w "$cols" -s
     echo
     echo
     echo "$border"
@@ -67,6 +67,7 @@ actions() {
     local answer_1="${1}"
     local answer_2="${2}"
     local answer_3="${3}"
+    local answer_4="${4}"
     
     answer_array=()
     answer_array+=("${answer_1}")
@@ -79,6 +80,11 @@ actions() {
     if [ ! -z "${answer_3}" ]
     then
         answer_array+=("${answer_3}")
+    fi
+    
+    if [ ! -z "${answer_4}" ]
+    then
+        answer_array+=("${answer_4}")
     fi
     
     answer_array+=("Leave Game")
@@ -534,6 +540,200 @@ scene_2_faerie() {
     message "${message}"
     carry_on
 
-    exit_game
+    local message="Inside you find yourself standing in a vast throne room with a vaulted cathedral-like ceiling filled with swirling, shimmering colors. Supporting the ceiling are colossal pillars made of what appears to be nothing more than clouds and mist.
+    
+    At the far end of the throne room sits the most beautiful woman you've ever seen. Her skin is white and smooth like porceline, and her eyes are piercing and sharp. Her regal demeanor is most severe."
+    
+    clear
+    message "${message}"
+    carry_on
+
+    local message="Oberon greets the queen and introduces you. '${LIGHT_BLUE}Welcome, child,${NO_COLOR}' she greets you. Here eyes, full of swirling mist, look directly into your own, unblinking. They seem both cold and hungry, and you quickly look away.
+    
+    '${LIGHT_BLUE}Come, Oberon. Let us sit and listen.${NO_COLOR}'"
+    
+    clear
+    message "${message}"
+    carry_on
+
+    local message="As the two royals take their seats, the rest of the fairy procession files into the room. Although they were quite jovial before, the whole crowd is now quiet and somber.
+    
+    '${LIGHT_BLUE}Tell us, Bridget,${NO_COLOR}' the queen says, '${LIGHT_BLUE}What poems do you know? Recite something for us.${NO_COLOR}'"
+    
+    clear
+    message "${message}"
+    carry_on
+
+    local message="Recite something? Oh dear, you hadn't prepared for this. Mother had taught you Psalm 23. You also remember the opening verses to the funny Jabberwocky poem. Then again, maybe it would be polite to ask the king and queen what they'd like to hear. Or maybe it would be best to say, 'No, thank you,' so as not to make a fool of yourself."
+
+    clear
+    message "${message}"
+
+    local question="What to do?"
+
+    question "${question}"
+    actions "Recite Psalm 23" "Recite Jabberwocky" "Take a request" "Recite nothing"
 }
 
+recite_psalm_23() {
+    ((align_human++))
+
+    local message="You decide to recite Psalm 23. You close your eyes in concentration. 
+    
+    'The LORD is my shepherd; I shall not want
+    He maketh me to lie down in green pastures
+    He leadeth me beside the still waters
+    He restoreth...'
+    
+    '${GREEN}STOP!${NO_COLOR}' Oberon's voice booms out across the spaceous hall."
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="You open your eyes and look around. The queen is seated on her thrown, leaning away from you, with one hand clasped over her chest. Oberon is standing next to her, his face red with beads of sweat dripping down the sides. His eyes seem filled with fury. All around the room, the party guests appear distraught. Many have their hands over their ears, and some have fallen to their knees.
+    
+    'I'm sorry,' you say timidly. 'Did I do something wrong?'"
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="Oberon seems to remember himself, and his countenance shifts back to its normal cheerful self. '${GREEN}Oh no, dear child,${NO_COLOR}' he croons, mopping his brow with his one hand. '${GREEN}It's just, uh... well, you see... er... it's very late now. I believe it is time we best be on our way. After all, I'm not as young as I used to be,${NO_COLOR}' he says with a slight chuckle.
+    
+    The rest of the crowd laughs lightly as well, and begins gather itself to depart. It seems strange to be leaving so soon when you had just arrive. But the king seems insistent, and the way the queen looks at you makes you feel distictly unwelcome."
+
+    clear
+    message "${message}"
+    carry_on
+
+    scene_3_fairie
+}
+
+recite_jabberwocky() {
+    ((align_fairy++))
+
+    local message="You decide to recite Jabberwocky, or at least what you can remember of it.
+    
+    ’Twas brillig, and the slithy toves
+    Did gyre and gimble in the wabe:
+    All mimsy were the borogoves,
+    And the mome raths outgrabe.
+
+    “Beware the Jabberwock, my son!
+    The jaws that bite, the claws that catch!
+    Beware the Jubjub bird, and shun
+    The frumious Bandersnatch!”"
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="You continue reciting the poem, and before long find that you've quoted the entire thing. You didn't even know you knew the whole thing.
+    
+    The crowd erupts with cheer and applause. Oberon's laughter rings through among the throne room's pillars and he claps with joy. Even the queen's serene and austere face breaks into a smile as she lighly applauds.
+    
+    You can't help but smile from ear to ear."
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="'${GREEN}Excellent! Absolutely brilliant, my child!${NO_COLOR}' Oberon exclaims. '${GREEN}Come, take your place beside me,${NO_COLOR}' he gestures to a seat beside his. '${GREEN}And let us have more music and dancing!${NO_COLOR}'"
+
+    clear
+    message "${message}"
+    carry_on
+
+    ending_party
+}
+
+take_a_request() {
+    ((align_victim++))
+
+    local message="'What would you like to hear?' you ask the king and queen.
+    
+    '${LIGHT_BLUE}Something of the Tuatha Dé Danann,${NO_COLOR}' the queen answers.
+    
+    'Oh,' you reply somewhat embarrased. 'I'm afraid I don't know much about the Tuatha Dé Danann, and certainly not any of their poems.'"
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="'${GREEN}Do not worry, dear Bridget,${NO_COLOR}' Oberon chuckles. '${GREEN}Sit hear, and learn well.${NO_COLOR}'
+    
+    You take your seat next to Oberon's as the king steps forward and begins to recite in Gaelic,
+    
+    Am gaeth i m-muir
+    Am tond trethan
+    Am fuaim mara
+    Am dam secht ndirend
+    Am séig i n-aill"
+
+    clear
+    message "${message}"
+    carry_on
+
+    local end_text=`[[ $tired == true ]] && echo "." || echo ", just like you felt after eating some of the food in Oberon's palace." `
+
+    local message="The whole room is captivated by the king's words. They ring and echo throughout the throne room with an enchanting thrum.
+    
+    You don't know Gaelic, but somehow you seem to know... or rather feel the meaning of the words. As you listen, some part of you inside feels like you are changing${end_text}
+    
+    Oberon's recital is followed by a great deal of applause and cheering."
+
+    clear
+    message "${message}"
+    carry_on
+
+    ending_party
+}
+
+recite_nothing() {
+    ((align_victor++))
+
+    local message="'Oh... I don't know any poems, your majesty,' you reply.
+    
+    The queen eyes you with suspicion. '${LIGHT_BLUE}You don't know ${ITALIC}any${END_ITALIC}${LIGHT_BLUE} poems?${NO_COLOR}' she asks.
+    
+    'No, ma'am,' you reply timidly."
+
+    clear
+    message "${message}"
+    carry_on
+
+    local message="The queen stares at you expressionless for a moment. Then brusquely remarks, '${LIGHT_BLUE}Hmm. Pity.${NO_COLOR}'
+    
+    Oberon, seeming eager to ease the tension, forces a chuckle. '${GREEN}Eh, haha! No matter. Uh... Bridget, my dear, come and have a seat next to me.${NO_COLOR}'
+    
+    Turning to his subjects, the king proclaims with a smile, '${GREEN}Let us have more music and dancing. This is a celebration, after all!${NO_COLOR}'"
+
+    clear
+    message "${message}"
+    carry_on
+
+    ending_party
+}
+
+ending_party() {
+    local message="The crowd breaks out into merrymaking just as they had back at Oberon's palace, as though there had been no interruption at all between the two. The party carries on for a good while longer, and only begins to wind down just as a small sliver of light begins to glow along the east horizon.
+    
+    The entire procession then gathers their things and the few members who had passed out some time during the revelry, and make their way back to their carriages, while you and Oberon bid farewell to the queen."
+
+    clear
+    message "${message}"
+    carry_on
+
+    scene_3_fairie
+}
+
+scene_3_fairie() {
+    local message="Before long you find yourself back in Oberon's carriage and whisked away to the palace at the top of the knoll."
+
+    clear
+    message "${message}"
+    carry_on
+
+    exit_game
+}

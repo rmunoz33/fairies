@@ -6,9 +6,12 @@ RED="\033[0;31m"
 GREEN="\033[0;32m"
 LIGHT_RED="\033[1;31m"
 LIGHT_GREEN="\033[1;32m"
+LIGHT_BLUE="\033[1;94m"
 NO_COLOR="\033[0m"
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
+ITALIC="\e[3m"
+END_ITALIC="\e[0m"
 
 function print_green() {
   echo -e "${GREEN}$1${NO_COLOR}"
